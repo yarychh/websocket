@@ -1,0 +1,32 @@
+<div class="d-flex align-items-center justify-content-center">
+  <div class="card col-10">
+
+    <div class="card p-2 pb-0">
+      <ul class="list-group">
+        <ng-container *ngIf="websocket.chatMessages.length; else noMessages">
+          <li class="list-group-item" *ngFor="let message of websocket.chatMessages">
+            <strong>{{ message.name }}:</strong>
+            <span>{{ message.message }}</span>
+          </li>
+        </ng-container>
+
+        <ng-template #noMessages>
+          <h1 class="text-center">No messages yet</h1>
+        </ng-template>
+      </ul>
+    </div>
+
+    <form (submit)="sendMessage()" class="d-flex p-2 col-12" [formGroup]="sendForm">
+      <div class="col-2 d-flex me-2">
+        <input type="text" formControlName="name" class="from-control rounded" [class.required]="sendForm.invalid" placeholder="enter your name"
+          autocomplete="given-name">
+      </div>
+      <div class="col-7 d-flex">
+        <input type="text" formControlName="message" class="from-control rounded" placeholder="enter your message">
+      </div>
+      <div class="col-2 ms-auto">
+        <button [disabled]="sendForm.invalid" type="submit" class="submit btn btn-info">Send</button>
+      </div>
+    </form>
+  </div>
+</div>

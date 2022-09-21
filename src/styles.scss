@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+$main-bg: #EEEEEE;
+$main-light-blue: #9FC9F3;
+$main-acent: #A460ED;
+$secondary: #F07DEA;
+
+html,
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: $main-bg;
+}
